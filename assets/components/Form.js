@@ -1,5 +1,5 @@
-import { array } from 'prop-types';
 import React from 'react'
+import {useForm} from 'react-hook-form';
 
 // Components
 import { Button } from './Button';
@@ -19,7 +19,7 @@ export const Form = ({label1, label2, name1, name2, type1, type2, holder1, holde
             <br></br> 
              
             <div className='form-group'>    
-                    <Button color={btnColor} type={btnType} text={btnTxt} onClick={btnOnclick}/> 
+                    <Button color={btnColor} text={btnTxt} onClick={btnOnclick}/> 
             </div>
         </form>
     )
