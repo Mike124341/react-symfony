@@ -1,11 +1,12 @@
 import React from 'react'
-import {useForm} from 'react-hook-form';
+// import { useForm } from 'react-hook-form';
 
 // Components
 import { Button } from './Button';
 import { InputField } from './InputField';
 
-export const Form = ({label1, label2, name1, name2, type1, type2, holder1, holder2, btnColor, btnTxt, btnOnclick, btnType, onSubmit}) => {
+export const Form = ({label1, label2, name1, name2, type1, type2, holder1, holder2, btnColor, btnTxt, onSubmit}) => {
+
     return (
         <form onSubmit={onSubmit}>
             <div className='form-group'>
@@ -19,7 +20,7 @@ export const Form = ({label1, label2, name1, name2, type1, type2, holder1, holde
             <br></br> 
              
             <div className='form-group'>    
-                    <Button color={btnColor} text={btnTxt} onClick={btnOnclick}/> 
+                    <Button color={btnColor} text={btnTxt}/> 
             </div>
         </form>
     )

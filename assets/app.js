@@ -11,6 +11,7 @@ import './styles/app.css';
 
 // start the Stimulus application
 import './bootstrap';
+import { InputForm } from './components/InputForm';
 
 
 class App extends React.Component {
@@ -19,6 +20,7 @@ class App extends React.Component {
     render() {
         return (
             //<> & </> Zijn react fragments hierdoor komt er geen error
+            <>
             <div className='form1'>
                 <h1>form</h1>
                 <Form
@@ -27,6 +29,10 @@ class App extends React.Component {
                     btnType='submit' btnColor='Gold' btnTxt='Versturen' onSubmit={this.re}
                 />
             </div>
+
+            <InputForm /> 
+
+            </>
         );
     }
 }
