@@ -16,8 +16,7 @@ export const InputForm = ({ formName }) => {
             console.log(response);
         }).catch(function (error) {
             console.error(error);
-        })
-        console.log(data);
+        });
 
     return (
         <div className='form1'>

@@ -6,3 +6,10 @@ body {
     margin: auto;
     padding-top: 5%;
 }
+
+.dataTable {
+    max-width: 70% !important;
+    margin: auto !important; 
+    padding-top: 5% !important;
+}
+
