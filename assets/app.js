@@ -21,17 +21,7 @@ class App extends React.Component {
         return (
             //<> & </> Zijn react fragments hierdoor komt er geen error
             <>
-            <div className='form1'>
-                <h1>form</h1>
-                <Form
-                    label1='Voornaam' label2='Achternaam' name1='fname' name2='lname'
-                    holder1='Voornaam' holder2='Achternaam' type1='text' type2='text'
-                    btnType='submit' btnColor='Gold' btnTxt='Versturen' onSubmit={this.re}
-                />
-            </div>
-
-            <InputForm /> 
-
+                <InputForm />
             </>
         );
     }

@@ -5,10 +5,10 @@ import React from 'react'
 import { Button } from './Button';
 import { InputField } from './InputField';
 
-export const Form = ({label1, label2, name1, name2, type1, type2, holder1, holder2, btnColor, btnTxt, onSubmit}) => {
+export const Form = ({label1, label2, name1, name2, type1, type2, holder1, holder2, btnColor, btnTxt, action}) => {
 
     return (
-        <form onSubmit={onSubmit}>
+        <form action={action}>
             <div className='form-group'>
                     <InputField label={label1} name={name1} type={type1} placeHolder={holder1}/>
             </div>
