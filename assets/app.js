@@ -2,11 +2,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import React from 'react';
 import ReactDom from 'react-dom';
+import axios from 'axios';
 
 // Components
 import { InputForm } from './components/InputForm';
 import { DelForm } from './components/DelForm';
-import DataTable from './components/DataTable';
+import { DataTable } from './components/DataTable';
 
 
 // any CSS you import will output into a single css file (app.css in this case)
@@ -16,13 +17,28 @@ import styles from './styles/app.css';
 
 
 class App extends React.Component {
-    re = () => {alert('Heeyyyyy');}
+    constructor() {
+        super()
+        this.state = {
+            dataList: []
+        }
+        this.getList()
+    }
+
+    getList() {
+        axios.get('/api/read').then(res => {
+            this.setState({dataList: res.data})
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
 
     render() {
         return (
             <>  
                 <div>
-                    <DataTable />
+                    <DataTable dataList={this.state.dataList}/>
                 </div>
 
                 <div className='form1'>
