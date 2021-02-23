@@ -54,4 +54,23 @@ class CrudController extends AbstractController
         return $this->json($allFormData);
     }
 
+    #[Route('/delete', name: 'crud_delete')]
+    /** 
+    *@param Request $request
+    */ 
+    public function delete(Request $request): Response {
+
+        $data = json_decode($request->getContent());
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $a = $entityManager->getRepository(FormData::class)->find($data->id);
+
+
+        if (!$a) {
+            return 'nee';
+        }
+
+        return $this->json($a);
+    }
+
 }

@@ -4,23 +4,45 @@ import axios from 'axios';
 
 import { useForm } from 'react-hook-form';
 
-export const InputForm = ({ formName }) => {
+export const InputForm = ({ formName, formType }) => {
     
     // react hook form
     const { register, handleSubmit, errors, } = useForm();
 
     // onSubmit 
-    const onSubmit = data => 
-        axios.post('/api/create', data)
-        .then(function (response){
-            console.log(response);
-        }).catch(function (error) {
-            console.error(error);
-        });
+    const onSubmit = data => {
+        switch (formType) {
+            case 'delete':
+                axios.post('/api/delete', data)
+                .then(function (response){
+                    console.log(response)
+                }).catch(function (error) {
+                    console.error(error);
+                });
+            break;
 
+            case 'update':
+                axios.post('/api/update', data)
+                .then(function (response){
+                    location.reload();
+                }).catch(function (error) {
+                    console.error(error);
+                });
+            break;
+
+            default:
+                axios.post('/api/create', data)
+                .then(function (response){
+                    location.reload();
+                }).catch(function (error) {
+                    console.error(error);
+                });
+            break;
+        }
+    }
     return (
         <div className='form1'>
-            <h1>Form 2</h1>
+            <h1>{formName}</h1>
 
             {/* handleSubmit validate de data -- (ref register) */}
             <form name={formName} onSubmit={ handleSubmit(onSubmit) }>

@@ -4,9 +4,10 @@ import React from 'react';
 import ReactDom from 'react-dom';
 
 // Components
-import { Form } from './components/Form';
 import { InputForm } from './components/InputForm';
-import { FormDataTable } from './components/FormDataTable';
+import { DelForm } from './components/DelForm';
+import DataTable from './components/DataTable';
+
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
@@ -22,8 +23,10 @@ class App extends React.Component {
         return (
             //<> & </> Zijn react fragments hierdoor komt er geen error
             <>
-                <FormDataTable/>
-                <InputForm />
+                {/* <tabletest /> */}
+                <DataTable />
+                <InputForm formName='create'/>
+                <DelForm formName='Delete'/>
             </>
         );
     }
