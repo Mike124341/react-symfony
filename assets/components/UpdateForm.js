@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
-export const UpdateForm = ({ formName }) => {
+export const UpdateForm = ({ formName, handleRead }) => {
     const [message, setMessage] = useState([]);
     // react hook form
     const { register, handleSubmit, errors, } = useForm();
@@ -12,6 +12,7 @@ export const UpdateForm = ({ formName }) => {
         axios.post('/api/update', data)
         .then(function (response){
             setMessage(response);
+            handleRead()
         })
         .catch(function (error) {
            console.error(error);

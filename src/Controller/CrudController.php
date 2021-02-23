@@ -44,7 +44,7 @@ class CrudController extends AbstractController
         // Sla het object op
         $entityManager->flush();
 
-        return new response(dd($formData));
+        return new response('Gebruiker toegevoegd');
     }
 
     #[Route('/read', name: 'crud_read')]

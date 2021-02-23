@@ -14,9 +14,6 @@ import { UpdateForm } from './components/UpdateForm';
 // any CSS you import will output into a single css file (app.css in this case)
 // import './styles/app.css';
 import styles from './styles/app.css';
-
-
-
 class App extends React.Component {
     constructor() {
         super()
@@ -24,11 +21,13 @@ class App extends React.Component {
             dataList: []
         }
         this.getList()
+        this.getList = this.getList.bind(this);
     }
 
     getList() {
         axios.get('/api/read').then(res => {
             this.setState({dataList: res.data})
+            console.log(this.state.dataList)
         })
         .catch(error => {
             console.log(error)
@@ -43,9 +42,9 @@ class App extends React.Component {
                 </div>
                 <hr/>
                 <div className='form1'>
-                    <InputForm formName='Create'/>
-                    <UpdateForm formName='Update' />
-                    <DelForm formName='Delete'/>
+                    <InputForm handleRead={this.getList} formName='Create'/>
+                    <UpdateForm handleRead={this.getList} formName='Update' />
+                    <DelForm handleRead={this.getList} formName='Delete'/>
                 </div>
             </>
         );

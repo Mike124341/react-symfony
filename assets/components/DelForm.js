@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 
-export const DelForm = ({ formName, formType }) => {
+export const DelForm = ({ formName, handleRead }) => {
     const [message, setMessage] = useState([]);
     // react hook form
     const { register, handleSubmit, errors, } = useForm();
@@ -11,13 +11,13 @@ export const DelForm = ({ formName, formType }) => {
     const onSubmit = data => {
         axios.post('/api/delete', data)
         .then(function (response){
-            // console.log(response)
             setMessage(response);
-            // console.log(message)
+            handleRead()
         }).catch(function (error) {
            console.error(error);
         });
     }
+
     return (
         <div id={formName}>
             <h1>{formName}</h1>
@@ -32,7 +32,7 @@ export const DelForm = ({ formName, formType }) => {
                     {/* Error handlets */}
                     {errors.fname && <p className='danger'>{ errors.fname.message }</p>}
                     <label/>
-                    <button className='form-control' type='submit'>Verwijderen</button>
+                    <button className='form-control' type='submit' >Verwijderen</button>
                     <p>{message.data}</p>
                 </div>
             </form>

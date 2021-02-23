@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 
-export const InputForm = ({ formName, formType, refresh }) => {
-    
+export const InputForm = ({ formName, handleRead }) => {
+    const [message, setMessage] = useState([]);
     // react hook form
     const { register, handleSubmit, errors, } = useForm();
 
@@ -11,7 +11,8 @@ export const InputForm = ({ formName, formType, refresh }) => {
     const onSubmit = data => {
         axios.post('/api/create', data)
         .then(function (response){
-             location.reload();
+            setMessage(response.data);
+            handleRead()
         }).catch(function (error) {
             console.error(error);
         });
@@ -43,6 +44,7 @@ export const InputForm = ({ formName, formType, refresh }) => {
                 <div className='form-group'>
                     <label/>
                     <button className='form-control crud-btn' type='submit'>Toevoegen</button>
+                    {message}
                 </div>
 
             </form>
