@@ -3,7 +3,7 @@ import React from 'react'
 export const DataTable = ({dataList}) => {
     return (
         <div className='dataTable'>
-                {console.log(dataList)}
+            <h1>Gebruikers tabel</h1>
             <table>
                 <thead>
                     <tr>
@@ -13,12 +13,12 @@ export const DataTable = ({dataList}) => {
                     </tr>
             </thead>
             <tbody>                    
-            {dataList.map(function(slot){
+            {dataList.map(function(data){
                     return (
-                    <tr key={slot.id}>
-                        <td>{slot.id}</td>
-                        <td>{slot.voornaam}</td>
-                        <td>{slot.achternaam}</td>
+                    <tr key={data.id}>
+                        <td>{data.id}</td>
+                        <td>{data.voornaam}</td>
+                        <td>{data.achternaam}</td>
                     </tr>
                 )
             })}

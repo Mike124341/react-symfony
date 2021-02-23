@@ -8,6 +8,7 @@ import axios from 'axios';
 import { InputForm } from './components/InputForm';
 import { DelForm } from './components/DelForm';
 import { DataTable } from './components/DataTable';
+import { UpdateForm } from './components/UpdateForm';
 
 
 // any CSS you import will output into a single css file (app.css in this case)
@@ -40,9 +41,10 @@ class App extends React.Component {
                 <div>
                     <DataTable dataList={this.state.dataList}/>
                 </div>
-
+                <hr/>
                 <div className='form1'>
                     <InputForm formName='Create'/>
+                    <UpdateForm formName='Update' />
                     <DelForm formName='Delete'/>
                 </div>
             </>

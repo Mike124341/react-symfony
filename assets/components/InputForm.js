@@ -1,44 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import axios from 'axios';
-
 import { useForm } from 'react-hook-form';
 
-export const InputForm = ({ formName, formType }) => {
+export const InputForm = ({ formName, formType, refresh }) => {
     
     // react hook form
     const { register, handleSubmit, errors, } = useForm();
 
     // onSubmit 
     const onSubmit = data => {
-        switch (formType) {
-            case 'delete':
-                axios.post('/api/delete', data)
-                .then(function (response){
-                    console.log(response)
-                }).catch(function (error) {
-                    console.error(error);
-                });
-            break;
-
-            case 'update':
-                axios.post('/api/update', data)
-                .then(function (response){
-                    location.reload();
-                }).catch(function (error) {
-                    console.error(error);
-                });
-            break;
-
-            default:
-                axios.post('/api/create', data)
-                .then(function (response){
-                    location.reload();
-                }).catch(function (error) {
-                    console.error(error);
-                });
-            break;
-        }
+        axios.post('/api/create', data)
+        .then(function (response){
+             location.reload();
+        }).catch(function (error) {
+            console.error(error);
+        });
     }
     return (
         <div id={formName}>
@@ -66,18 +41,10 @@ export const InputForm = ({ formName, formType }) => {
 
                 <div className='form-group'>
                     <label/>
-                    <button className='form-control' type='submit'>Toevoegen</button>
+                    <button className='form-control crud-btn' type='submit'>Toevoegen</button>
                 </div>
 
             </form>
         </div>
     )
-}
-
-InputForm.propTypes = {
-    formName: PropTypes.string,
-}
-
-InputForm.defaultProps = {
-    formName: 'inputForm1'
 }
