@@ -10,10 +10,9 @@ import DataTable from './components/DataTable';
 
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.css';
+// import './styles/app.css';
+import styles from './styles/app.css';
 
-// start the Stimulus application
-import './bootstrap';
 
 
 class App extends React.Component {
@@ -21,12 +20,15 @@ class App extends React.Component {
 
     render() {
         return (
-            //<> & </> Zijn react fragments hierdoor komt er geen error
-            <>
-                {/* <tabletest /> */}
-                <DataTable />
-                <InputForm formName='create'/>
-                <DelForm formName='Delete'/>
+            <>  
+                <div>
+                    <DataTable />
+                </div>
+
+                <div className='form1'>
+                    <InputForm formName='Create'/>
+                    <DelForm formName='Delete'/>
+                </div>
             </>
         );
     }

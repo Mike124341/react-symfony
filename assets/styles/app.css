@@ -31,3 +31,13 @@ td, th {
   tr:nth-child(even) {
     background-color: #dddddd;
   }
+
+#Create {
+  min-width: 550px;
+  float: left;
+}
+
+#Delete {
+  min-width: 550px;
+  float: right;
+}

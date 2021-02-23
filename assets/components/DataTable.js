@@ -18,6 +18,7 @@ export default class DataTable extends Component {
             console.log(error)
         })
     }
+
     render() {
         return (
             <div className='dataTable'>
@@ -28,7 +29,6 @@ export default class DataTable extends Component {
                             <td>id</td>
                             <td>Voornaam</td>
                             <td>Achternaam</td>
-                            <td>Verwijderen</td>
                         </tr>
                 </thead>
                 <tbody>                    
@@ -38,7 +38,6 @@ export default class DataTable extends Component {
                             <td>{slot.id}</td>
                             <td>{slot.voornaam}</td>
                             <td>{slot.achternaam}</td>
-                            <td>  </td>
                         </tr>
                     )
                 })}

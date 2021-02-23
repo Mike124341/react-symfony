@@ -41,7 +41,7 @@ export const InputForm = ({ formName, formType }) => {
         }
     }
     return (
-        <div className='form1'>
+        <div id={formName}>
             <h1>{formName}</h1>
 
             {/* handleSubmit validate de data -- (ref register) */}
@@ -66,7 +66,7 @@ export const InputForm = ({ formName, formType }) => {
 
                 <div className='form-group'>
                     <label/>
-                    <button className='form-control' type='submit'>Verzenden</button>
+                    <button className='form-control' type='submit'>Toevoegen</button>
                 </div>
 
             </form>

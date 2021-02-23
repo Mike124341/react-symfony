@@ -58,19 +58,20 @@ class CrudController extends AbstractController
     /** 
     *@param Request $request
     */ 
-    public function delete(Request $request): Response {
+    public function delete(Request $request ): Response {
+        $em = $this->getDoctrine()->getManager();
 
         $data = json_decode($request->getContent());
+        $targetUser = $this->formDataRepository->find($data->id);
 
-        $entityManager = $this->getDoctrine()->getManager();
-        $a = $entityManager->getRepository(FormData::class)->find($data->id);
-
-
-        if (!$a) {
-            return 'nee';
+        if (!$targetUser) {
+            return new Response('Geen gebruiker geveonden');
         }
 
-        return $this->json($a);
+        $em->remove($targetUser);
+        $em->flush();
+
+        return new Response('Gebruiker Verwijderd!');
     }
 
 }
