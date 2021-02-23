@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 export const UpdateForm = ({ formName }) => {
     const [message, setMessage] = useState([]);
@@ -26,10 +27,11 @@ export const UpdateForm = ({ formName }) => {
 
                 <div className='form-group'>
 
-                    <label htmlFor='id'> Gebruiker id </label>
+                    <label htmlFor='Up_id'> Gebruiker id </label>
                     <input className='form-control'
-                        name='id' placeholder='id' typ='number' ref={register({required: "Veld is verplicht"})}
+                        name='Up_id' placeholder='Bijv. 7' typ='number' ref={register({required: "Veld is verplicht"})}
                     />
+                    {errors.id && <p>{ errors.id.message }</p>}
                 </div>
 
                 <div className='form-group'>
@@ -38,6 +40,7 @@ export const UpdateForm = ({ formName }) => {
                     <input className='form-control'
                         name='UP_fname' placeholder='Jan' typ='text' ref={register({required: "Veld is verplicht"})}
                     />
+                    {errors.UP_fname && <p>{ errors.UP_fname.message }</p>}
                 </div>
 
                 <div className='form-group'>
@@ -47,7 +50,7 @@ export const UpdateForm = ({ formName }) => {
                         name='UP_lname' placeholder='Idema' typ='text' ref={register({required: "Veld is verplicht"})}
                     />
                     {/* Error handlets */}
-                    {errors.fname && <p className='danger'>{ errors.fname.message }</p>}
+                    {errors.UP_lname && <p>{ errors.UP_lname.message }</p>}
                 </div>
 
                 <div className='form-group'>
@@ -56,7 +59,7 @@ export const UpdateForm = ({ formName }) => {
                     <button className='form-control' type='submit'>Verwijderen</button>
                     <p>{message.data}</p>
                 </div>
-                
+
             </form>
         </div>
     )
